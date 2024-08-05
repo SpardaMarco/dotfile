@@ -1,0 +1,231 @@
+// █░█░█ ▄▀█ █▄█ █▄▄ ▄▀█ █▀█
+// ▀▄▀▄▀ █▀█ ░█░ █▄█ █▀█ █▀▄
+
+{
+  // general config //
+     "layer": "top",
+     "position": "top",
+     "height": 12,
+     "exclusive": true,
+     "passthrough": false,
+     "gtk-layer-shell": true,
+     "width": "100%",
+     "margin-top": 0,
+ 
+ 
+ // modules on the left side //
+   "modules-left":[
+   "temperature",
+   "custom/padd",
+   "cpu",
+   "custom/padd",
+   "memory",
+   "custom/padd",
+   "hyprland/workspaces",
+   "custom/padd",
+   "custom/spotify"
+   ],
+ 
+ // modules in center //
+   "modules-center": [
+   "custom/padd",
+   "clock#date",
+   "custom/padd"
+   ],
+ 
+ // modules on right side //
+     "modules-right": [
+     "pulseaudio",
+     "custom/padd",
+     "pulseaudio#microphone",
+     "custom/padd",
+     "battery",
+     "custom/padd",
+     "network",
+     "custom/padd",
+     "bluetooth",
+     "custom/padd",
+     "backlight",
+     "custom/padd",
+     "clock#time",
+     "custom/padd",
+     "custom/power"
+     ],
+ 
+ 
+ // █▀▄▀█ █▀█ █▀▄ █░█ █░░ █▀▀ █▀
+ // █░▀░█ █▄█ █▄▀ █▄█ █▄▄ ██▄ ▄█
+ 
+ 
+ "idle_inhibitor": {
+     "format": "{icon}",
+     "rotate": 0,
+     "format-icons": {
+         "activated": "󱑂",
+         "deactivated": "󱑎"
+     }
+ },
+ 
+ 
+ "custom/power": {
+     "format": " ",
+     "rotate": 0,
+     "on-click": "~/.config/scripts/logout.sh",
+ },
+ 
+ "cpu": {
+     "interval": 10,
+     "format": "󰍛 {usage}%",
+     "rotate": 0,
+     "on-click": "kitty --hold -e btop"
+ },
+ 
+ 
+ "temperature": {
+     "critical-threshold": 50,
+     "format": " {temperatureC}°C",
+     "tooltip": false
+   },
+ 
+  "hyprland/workspaces": {
+         "format": "{icon}",
+         "format-icons": {
+             "1": "1",
+             "2": "2",
+             "3": "3",
+             "4": "4",
+             "5": "5",
+             "6": "6",
+             "7": "7",
+             "8": "8",
+             "9": "9",
+         }
+     },
+  
+  "memory": {
+      "interval": 30,
+      "format": " {}%",
+      "max-length": 10
+  },
+
+ "custom/spotify": {
+     "exec": "/usr/bin/python3 ~/.config/scripts/mediaplayer.py --player spotify",
+     "format": "{} ",
+     "return-type": "json",
+     "on-click": "playerctl play-pause",
+     "on-scroll-up": "playerctl next",
+     "on-scroll-down": "playerctl previous",
+     "max-length": 400
+ },
+ 
+ 
+ "network": {
+     "tooltip": true,
+     "format-wifi": "󰤨 ",
+     "rotate": 0,
+     "format-ethernet": "󰈀 ",
+     "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+     "format-linked": "󰈀 {ifname} (No IP)",
+     "format-disconnected": "󰤭 ",
+     "tooltip-format-disconnected": "Disconnected",
+     "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+     "interval": 2,
+     "on-click-right": "kitty -e nmtui"
+ },
+ 
+ "bluetooth": {
+     "format": "",
+     "format-connected": "󰂱 connected",
+     "format-disabled": "󰂲",
+     "rotate": 0,
+     "on-click-right": "kitty -e bluetoothctl",
+     "tooltip-format": "{controller_alias}\n{num_connections} connected",
+     "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+     "tooltip-format-enumerate-connected": "{device_alias}",
+     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%"
+ },
+ 
+ "pulseaudio": {
+ "format": "{icon} {volume}%",
+     "rotate": 0,
+     "format-muted": " ",
+         "format-icons": {
+             "headphone": " ",
+             "hands-free": " ",
+             "headset": " ",
+             "phone": " ",
+             "portable": " ",
+             "car": " ",
+             "default": [" ", " ", " "]
+         },
+         "on-click":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+     },
+ 
+ "pulseaudio#microphone": {
+     "format": "{format_source}",
+     "rotate": 0,
+     "format-source": " {volume}%",
+     "format-source-muted": " ",
+     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+     "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+ -l 1",
+		 "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%- -l 0"
+ },
+ 
+ "battery": {
+     "states": {
+         "good": 95,
+         "warning": 30,
+         "critical": 20
+     },
+ 
+  "format": "{icon}  {capacity}%",
+     "rotate": 0,
+     "format-charging": " {capacity}%",
+     "format-plugged": " {capacity}%",
+     "format-alt": "{time} {icon}",
+     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+ },
+ 
+ "backlight": {
+     "device": "intel_backlight",
+     "rotate": 0,
+       "format": "{icon} {percent}%",
+     "format-icons": ["", "", "", "", "", "", "", "", " "],
+     "on-scroll-up": "brightnessctl set 1%+",
+     "on-scroll-down": "brightnessctl set 1%-"
+ },
+ 
+ "clock#time": {
+     "interval": 1,
+     "format": "{:%H:%M:%S}",
+     "tooltip": true,
+     "timezones": ["Europe/Lisbon", "Asia/Tokyo"],
+     "tooltip-format": "JP:{:%e %b} {tz_list}"
+   },
+ 
+ "clock#date": {
+      "locale": "en_US.UTF-8",
+      "interval": 20,
+      "format": "{:%e %b %Y}",
+      "tooltip": true,
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b>{}</b></span>"
+    }
+  }
+ },
+ 
+ 
+ 
+ 
+ // modules for padding //
+ 
+ "custom/padd": {
+     "format": "|",
+     "interval" : "once",
+     "tooltip": false
+ }
+ 
+ }

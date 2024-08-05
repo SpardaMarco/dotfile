@@ -1,0 +1,85 @@
+* {
+   border: 0;
+   border-radius: 0px;
+   font-family: "JetBrainsMono Nerd Font";
+   font-weight: bold;
+   font-size: 8px;
+   min-height: 12px;
+   color: #6f4cfc;
+}
+
+window#waybar {
+	background: rgba(00, 00, 00, 0.7);
+	border-radius: 0px;
+	padding: 0px;
+	margin-top: 0px;
+}
+
+tooltip {
+   background: #00000000;
+   color: #6f4cfc;
+   border-radius: 0px;
+   border-width: 0px;
+   padding: 0;
+   margin: 0;
+}
+
+#workspaces button {
+   box-shadow: none;
+   text-shadow: none;
+   padding: 0px;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   margin-left: 0px;
+   margin-right: 0px;
+   transition-duration: 0.5s;
+   color: #6f4cfc;
+}
+
+#workspaces button:hover {
+   background: none;
+}
+
+#workspaces button.persistent {
+   color: #6f4cfc;
+}
+
+#workspaces button.active {
+   border-bottom: 2px solid;
+   color: #6f4cfc;
+   transition-duration: 0.5s;
+}
+
+.custom-spotify {
+   padding: 0px;
+   margin: 0px;
+   color: #6f4cfc;
+}
+
+#idle_inhibitor,
+#bluetooth,
+#network {
+   color: #6f4cfc;
+   padding: 0px 2px;
+}
+
+#cpu,
+#temperature {
+   color: #6f4cfc;
+   padding: 0px 2px;
+   padding-right: 0px;
+}
+
+#custom-power,
+#clock,
+#pulseaudio,
+#battery {
+   color: #6f4cfc;
+   padding: 0px 0px;
+}
+
+/* custom padding */
+#custom-padd {
+   padding-right: 2px;
+   padding-left: 2px;
+}

@@ -1,0 +1,42 @@
+* {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+#window {
+  background-color: #0d1117;
+}
+
+#input {
+  padding: 8px 12px 4px;
+  font-size: 14px;
+  background-color: #0d1117;
+  border: none;
+  color: #ecf2f8;
+}
+
+#input:focus {
+  box-shadow: none;
+}
+
+#scroll {
+  background-color: #161b22;
+  margin: 1px 12px 12px;
+}
+
+#inner-box {
+  padding: 0px;
+}
+
+#entry {
+  padding: 8px;
+}
+
+#entry:selected {
+  border-radius: 8px;
+  background-color: #21262d;
+}
+
+#entry image {
+  margin-right: 8px;
+}
